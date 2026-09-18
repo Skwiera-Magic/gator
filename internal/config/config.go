@@ -43,7 +43,7 @@ func getConfigFilePath() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	fullPath := filepath.Join(home, configFilePath)
+	fullPath := filepath.Join(home, configFileName)
 	return  fullPath, nil
 }
 
@@ -68,4 +68,4 @@ func write(cfg Config) error {
 	return nil
 }
 
-const configFilePath = "gator/.gatorconfig.json"
+const configFileName = ".gatorconfig.json"
