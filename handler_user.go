@@ -69,3 +69,17 @@ func reset(s *state, cmd command) error {
 	fmt.Println("Database reset successfully")
 	return nil
 }
+
+func getUsers(s *state, cmd command) error {
+	users, err := s.db.GetUsers(context.Background())
+	if err != nil {
+		return fmt.Errorf("Could not find users: %v", err)
+	}
+	for _, user := range users {
+		if s.cfg.UserName == user.Name {
+			fmt.Println(user.Name + " (current)")
+		}
+		fmt.Println(user.Name)
+	}
+	return nil
+}
