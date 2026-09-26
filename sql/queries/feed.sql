@@ -9,3 +9,6 @@ VALUES (
     $6
 )
 RETURNING *;
+
+-- name: SelectFeed :many
+SELECT * FROM feeds;
