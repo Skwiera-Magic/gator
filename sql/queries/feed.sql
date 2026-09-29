@@ -41,6 +41,12 @@ WHERE url = $1;
 -- name: GetFeedFollowsForUser :many
 SELECT feed_follows.*, feeds.name AS feed_name, users.name AS user_name
 FROM feed_follows
-INNER JOIN feeds ON feed_follows.feed_id = feeds.id
-INNER JOIN users ON feed_follows.user_id = users.id
+INNER JOIN feeds 
+    ON feed_follows.feed_id = feeds.id
+INNER JOIN users 
+    ON feed_follows.user_id = users.id
 WHERE feed_follows.user_id = $1;
+
+-- name: UnfollowFeed :exec
+DELETE FROM feed_follows 
+WHERE feed_id = $1 AND user_id = $2;
