@@ -1,0 +1,4 @@
+link -> "postgres://postgres:macias@localhost:5432/gator"
+
+migration -> goose -dir sql/schema postgres "postgres://postgres:macias@localhost:5432/gator" up/down
+
